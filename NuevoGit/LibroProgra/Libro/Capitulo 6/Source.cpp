@@ -224,7 +224,7 @@ catch (...) {
 //------------------------------------------------------------------------------
 class Name_value {
 public:
-	vector<string>Lista;
+	
 	string Name;
 	int Age;
 	Name_value(string Nombre, int Edad)
@@ -243,7 +243,126 @@ public:
 //};
 
 
+int Ejercicio4()
+{
+	vector<Name_value>Lista;
+	Name_value Nombre1("Juan",26); 
+	Lista.push_back(Nombre1);
+	return 0;
+}
+
+int Ejercicio5()
+{
+	char Vacas;
+	int Contador=0;
+	int Score = 0;
+	bool SiguienteNivel=false;
+	cout << "Bienvenido al juego de los toros y las vacas\n"
+		"Te dare diferentes palabras que tienes que advinar poniendo letra por letrao si quieres toda la palabra\n"
+	"cada vez que aciertes el programa dira Toro y cuando te equivoques dira vaca:\n";
+	vector <char> PalabraUno{ 'h','o','l','a' };
+	while (SiguienteNivel ==false)
+	{
+		for (int i = 0; i < PalabraUno.size();)
+		{
+			cin >> Vacas;
+			if (Vacas == PalabraUno[i])
+			{
+					
+				cout << "Toro\n";
+				i++;
+				Contador++;
+				Score++;
+			}
+			else if(Vacas!=PalabraUno[i])
+			{
+				cout << "Vaca\n";
+			
+				Score++;
+			}
+			else
+			{
+
+			}
+			 if(Contador==PalabraUno.size())
+			{
+				cout << "La palabra es hola\n";
+				cout << "Tardaste " << Score << " de veces para adivinar la palabra\n";
+
+				SiguienteNivel = true;
+			}
+		}
+
+	}
+	cin.get();
+	return 0;
+
+
+
+
+}
+
 int main()
 {
+	
+	vector<char>Numeros;
+	cout << "Escibre un nuemero de hasta 6 digitos y cuando acabes de escribir escribe | para parar:\n";
+	for(char NumerosDeUsuario; cin>>NumerosDeUsuario;)
+	{
+		cin >> NumerosDeUsuario;
+		Numeros.push_back(NumerosDeUsuario);
+		if (NumerosDeUsuario == '|')
+		{ 
+			break;
+		}
+		
+	}
 
+	if (Numeros.size() == 1)
+	{
+		cout << "Eso no se vale";
+
+	}
+
+	else if (Numeros.size() == 2)
+		{
+		cout << Numeros[2] << "Unidades\n";
+	}
+	else if (Numeros.size() == 3)
+	{
+		cout << Numeros[3] << "Decenas " << Numeros[2] << " Unidades";
+
+	}
+	else if (Numeros.size() == 4)
+	{
+		cout << Numeros[4] << " Centenas " << Numeros[3] << " Decenas " << Numeros[2] << " Unidades";
+
+	}
+	else if (Numeros.size() == 5)
+	{
+		cout << Numeros[5] << " Millares " << Numeros[4] << " Centenas " << Numeros[3] << " Decenas " << Numeros[2] << " Unidades";
+
+	}
+	else if (Numeros.size() == 6)
+	{
+		cout << Numeros[6] << " Decenas de millar " << Numeros[5] << "Millares " << Numeros[4] << " Centenas " << Numeros[3] << " Decenas " << Numeros[2] << " Unidades";
+
+	}
+	else if (Numeros.size() == 7)
+	{
+		cout << Numeros[7] << " Centenas de Millon " << Numeros[6] << " Decenas de millar " << Numeros[5] << " Millares " << Numeros[4] << " Centenas " << Numeros[3] << " Decenas " << Numeros[2] << " Unidades";
+
+	}
+	else
+	{
+		simple_error("Estas fuera de rango\n");
+	}
+	
+	
+
+
+			
+		
+	cin.ignore();
+	cin.get();
 }
