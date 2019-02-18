@@ -302,7 +302,7 @@ int Ejercicio5()
 
 }
 
-int main()
+int Ejercicio9()
 {
 	
 	vector<char>Numeros;
@@ -362,7 +362,72 @@ int main()
 
 
 			
+	return 0;
+	cin.ignore();
+	cin.get();
+}
+
+int Factorial(int Numero)
+{
+	if (Numero ==0)
+	{
+		return 1;
+	}
+	vector<int>Lul;
+	for (int i = 1; i <= Numero; ++i)
+	{
+		Lul.push_back(i);
+
+	}
+	int UltimoValor = 1;
+	for (int e = Lul[Lul.size() - 2]; e > -1; e--)
+	{
+		UltimoValor *= Lul[e];
+	}
+	return UltimoValor;
+}
+
+
+int Permutacion(int a, int b)
+{
+	if (a < b)throw runtime_error("Tu numero a no puede ser menor a tu numero b\n");
+	int Divisor = a - b;
+	int Respuesta = Factorial(a) / Factorial(Divisor);
+	return Respuesta;
+}
+
+
+
+int main()
+{
+	char InputDeUsuario;
+	cout << "Este es un programa para hacer permutaciones y combinaciones. Escribe P para permutaciones o C para combinaciones:\n";
+	cin >> InputDeUsuario;
+	if (InputDeUsuario == 'P' || InputDeUsuario == 'p')
+	{
+		int a;
+		int b;
+		cout << "Escribe los dos numeros de los cuales quieras hacer tu permutacion:\n";
+		cin >> a >> b;
+		if (a < b)throw runtime_error("Tu numero a no puede ser menor a tu numero o numeros negativos b\n");
 		
+		int Divisor = a-b;
+		int Respuesta = Factorial(a) / Factorial(Divisor);
+		cout << Respuesta;
+		
+		
+		
+	}
+	else if (InputDeUsuario == 'C' || InputDeUsuario == 'c')
+	{
+		int a;
+		int b;
+		cout << "Elige los dos numeros que quieras para hacer tu Combinacion:\n";
+		cin >> a >> b;
+		int Resultado = Permutacion(a, b) / Factorial(b);
+		cout << Resultado;
+
+	}
 	cin.ignore();
 	cin.get();
 }
