@@ -309,7 +309,7 @@ int main()
 	cout << "Escibre un nuemero de hasta 6 digitos y cuando acabes de escribir escribe | para parar:\n";
 	for(char NumerosDeUsuario; cin>>NumerosDeUsuario;)
 	{
-		cin >> NumerosDeUsuario;
+	
 		Numeros.push_back(NumerosDeUsuario);
 		if (NumerosDeUsuario == '|')
 		{ 
@@ -326,31 +326,31 @@ int main()
 
 	else if (Numeros.size() == 2)
 		{
-		cout << Numeros[2] << "Unidades\n";
+		cout << Numeros[0] << "Unidades\n";
 	}
 	else if (Numeros.size() == 3)
 	{
-		cout << Numeros[3] << "Decenas " << Numeros[2] << " Unidades";
+		cout << Numeros[0] << "Decenas " << Numeros[1] << " Unidades";
 
 	}
 	else if (Numeros.size() == 4)
 	{
-		cout << Numeros[4] << " Centenas " << Numeros[3] << " Decenas " << Numeros[2] << " Unidades";
+		cout << Numeros[0] << " Centenas " << Numeros[1] << " Decenas " << Numeros[2] << " Unidades";
 
 	}
 	else if (Numeros.size() == 5)
 	{
-		cout << Numeros[5] << " Millares " << Numeros[4] << " Centenas " << Numeros[3] << " Decenas " << Numeros[2] << " Unidades";
+		cout << Numeros[0] << " Millares " << Numeros[1] << " Centenas " << Numeros[2] << " Decenas " << Numeros[3] << " Unidades";
 
 	}
 	else if (Numeros.size() == 6)
 	{
-		cout << Numeros[6] << " Decenas de millar " << Numeros[5] << "Millares " << Numeros[4] << " Centenas " << Numeros[3] << " Decenas " << Numeros[2] << " Unidades";
+		cout << Numeros[0] << " Decenas de millar " << Numeros[1] << "Millares " << Numeros[2] << " Centenas " << Numeros[3] << " Decenas " << Numeros[4] << " Unidades";
 
 	}
 	else if (Numeros.size() == 7)
 	{
-		cout << Numeros[7] << " Centenas de Millon " << Numeros[6] << " Decenas de millar " << Numeros[5] << " Millares " << Numeros[4] << " Centenas " << Numeros[3] << " Decenas " << Numeros[2] << " Unidades";
+		cout << Numeros[0] << " Centenas de Millon " << Numeros[1] << " Decenas de millar " << Numeros[2] << " Millares " << Numeros[3] << " Centenas " << Numeros[4] << " Decenas " << Numeros[5] << " Unidades";
 
 	}
 	else
