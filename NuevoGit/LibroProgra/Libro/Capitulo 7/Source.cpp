@@ -9,14 +9,14 @@
 
 #include "Includes.h"
 
-class Token {
+struct Token {
 public:
 	char kind;
 	double value;
 	string name;
 	Token(char ch) :kind(ch), value(0) { }
 	Token(char ch, double val) :kind(ch), value(val) { }
-	Token(string n,double val):name(n),value(val){}
+	Token(string n,char ch):name(n),kind(ch){}
 
 
 	
@@ -55,9 +55,7 @@ Token Token_stream::get()
 	case '%':
 	case ';':
 	case '=':
-	case let:
 	case quit:
-	case name:
 		return Token(ch);
 	case '.':
 	case '0':
@@ -68,7 +66,7 @@ Token Token_stream::get()
 	case '5':
 	case '6':
 	case '7':
-	case number:
+	case '8':
 	case '9':
 	{	cin.unget();
 	double val;
@@ -82,8 +80,8 @@ Token Token_stream::get()
 			while (cin.get(ch) && (isalpha(ch) || isdigit(ch))) s = ch;
 			cin.unget();
 			if (s == "let") return Token(let);
-			else if (s == "quit") return Token(name);
-			else
+			else if (s == "quit") return Token(quit);
+			return Token(name);
 			{
 				error("Bad token");
 			}
@@ -150,9 +148,11 @@ double primary()
 	{	double d = expression();
 	t = ts.get();
 	if (t.kind != ')') error("'(' expected");
+	return d;
 	}
+
 	case '-':
-		return -primary();
+		return primary();
 	case number:
 		return t.value;
 	case name:
