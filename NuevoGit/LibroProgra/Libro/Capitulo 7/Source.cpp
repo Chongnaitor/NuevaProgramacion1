@@ -9,7 +9,7 @@
 
 #include "Includes.h"
 
-struct Token {
+struct Token { //Es la clase que va a evaluar los cracteres
 public:
 	char kind;
 	double value;
@@ -22,7 +22,7 @@ public:
 	
 };
 
-class Token_stream {
+class Token_stream {//En este clase es para evaluar  si hay un token y pasar al siguiente token
 	bool full;
 	Token buffer;
 public:
@@ -33,19 +33,24 @@ public:
 
 	void ignore(char);
 };
+const char change = 'c';//Es para redefinir el valor de una variable
+const char let = 'L';//No se que es
+const char quit = 'E'; //Es el caracter para salir del programa
+const char print = ';'; //Es el caracter del programa para escribir 
+const char number = '8'; //Es para asignar un unmero
+const char name = 'a'; //Es el caracter para definir un nuombre
+const int K = 1000;
 
-const char let = 'L';
-const char quit = 'Q';
-const char print = ';';
-const char number = '8';
-const char name = 'a';
 
-Token Token_stream::get()
+
+
+Token Token_stream::get()//Esta funcion 
 {
-	if (full) { full = false; return buffer; }
+	if (full) { full = false; return buffer; }//Es una funcion que identifica si hay un cracrter en el token stream y si es asi la manda a buffer
 	char ch;
 	cin >> ch;
 	switch (ch) {
+	case 'h':
 	case '(':
 	case ')':
 	case '+':
@@ -55,7 +60,11 @@ Token Token_stream::get()
 	case '%':
 	case ';':
 	case '=':
+	case 'r':
+	case 'p':
+	case change:
 	case quit:
+	case let:
 		return Token(ch);
 	case '.':
 	case '0':
@@ -71,10 +80,10 @@ Token Token_stream::get()
 	{	cin.unget();
 	double val;
 	cin >> val;
-	return Token(number, val);
+	return Token(number, val);//Es para identficar cuando el usuairo se quiere salir del programa 
 	}
 	default:
-		if (isalpha(ch)) {
+		if (isalpha(ch)) { //No tengo mucha idea para saber que es esto
 			string s;
 			s += ch;
 			while (cin.get(ch) && (isalpha(ch) || isdigit(ch))) s = ch;
@@ -91,7 +100,7 @@ Token Token_stream::get()
 	}
 }
 
-void Token_stream::ignore(char c)
+void Token_stream::ignore(char c) //Es para ignotar el enteer 
 {
 	if (full && c == buffer.kind) {
 		full = false;
@@ -104,22 +113,22 @@ void Token_stream::ignore(char c)
 		if (ch == c) return;
 }
 
-struct Variable {
+struct Variable {//Esto es para definir una variable dentro de el programa mientras se ejecuta
 	string name;
 	double value;
 	Variable(string n, double v) :name(n), value(v) { }
 };
 
-vector<Variable> names;
+vector<Variable> names;//Es donde se guarda una variable que se haga en el programa 
 
-double get_value(string s)
+double get_value(string s)//Es para no se, no entiendo
 {
 	for (int i = 0; i < names.size(); ++i)
 		if (names[i].name == s) return names[i].value;
 	error("get: undefined name ", s);
 }
 
-void set_value(string s, double d)
+void set_value(string s, double d) //Para elefir un nombre y un valor
 {
 	for (int i = 0; i <= names.size(); ++i)
 		if (names[i].name == s) {
@@ -129,19 +138,19 @@ void set_value(string s, double d)
 	error("set: undefined name ", s);
 }
 
-bool is_declared(string s)
+bool is_declared(string s)//
 {
 	for (int i = 0; i < names.size(); ++i)
 		if (names[i].name == s) return true;
 	return false;
 }
 
-Token_stream ts;
+Token_stream ts;//Es para obtener un caracter y mandarlo a iostream
 
-double expression();
+double expression(); //Es la expresion que manejamos en la jerarquia de numeros de uestro prgrama 
 
-double primary()
-{
+double primary()//Es un numerp en la jerarquia de los pasoso
+{//Son diferentes pasos para ver wver que hace el programa para verificar si el token que obtienees una expresion
 	Token t = ts.get();
 	switch (t.kind) {
 	case '(':
@@ -150,9 +159,23 @@ double primary()
 	if (t.kind != ')') error("'(' expected");
 	return d;
 	}
+	case 'r':
+	{
+
+		double d = expression();
+		if (d<0)
+		{
+			error("Eso es una raiz negativa");
+		
+		}
+	
+		
+			d = sqrt(d);
+			return d;
+	}
 
 	case '-':
-		return primary();
+		return -primary();
 	case number:
 		return t.value;
 	case name:
@@ -161,8 +184,21 @@ double primary()
 		error("primary expected");
 	}
 }
+double declaration()//Se supone que con esta funcion se deberian poder declarar variablesn 
+{
+	Token t = ts.get();
+	if (t.kind != 'a') error("name expected in declaration");
+	string name = t.name;
+	if (is_declared(name)) error(name, " declared twice");
+	Token t2 = ts.get();
+	if (t2.kind != '=') error("= missing in declaration of ", name);
 
-double term()
+	double d = expression();
+	names.push_back(Variable(name, d));
+	return d;
+}
+
+double term()//Es la parte del prgorma que dtermina si el token es un primario
 {
 	double left = primary();
 	while (true) {
@@ -177,6 +213,26 @@ double term()
 		left /= d;
 		break;
 		}
+		case'p':
+		{
+			double d = primary();
+			int P = 0;
+			for (int i = 0; i < d; i++)
+			{
+				left *=left;
+			}
+			P = left;
+			left = P;
+
+			return left;
+
+		}
+		case 'c':
+		{
+			return declaration();
+		}
+
+		
 		default:
 			ts.unget(t);
 			return left;
@@ -184,11 +240,12 @@ double term()
 	}
 }
 
-double expression()
+double expression()//Es la funcuin que determina si ya se completo una expresion
 {
 	double left = term();
 	while (true) {
-		Token t = ts.get();
+		Token t = 
+			ts.get();
 		switch (t.kind) {
 		case '+':
 			left += term();
@@ -203,20 +260,9 @@ double expression()
 	}
 }
 
-double declaration()
-{
-	Token t = ts.get();
-	if (t.kind != 'a') error("name expected in declaration");
-	string name = t.name;
-	if (is_declared(name)) error(name, " declared twice");
-	Token t2 = ts.get();
-	if (t2.kind != '=') error("= missing in declaration of ", name);
-	double d = expression();
-	names.push_back(Variable(name, d));
-	return d;
-}
 
-double statement()
+ 
+double statement()//No tengo 
 {
 	Token t = ts.get();
 	switch (t.kind) {
@@ -233,9 +279,9 @@ void clean_up_mess()
 	ts.ignore(print);
 }
 
-const string prompt = "> ";
+const string prompt = "> ";//Estp es para ,ejorar la imterfaz del usuario
 const string result = "= ";
-
+//Estp ya es la funcion que junta toda la calculadora
 void calculate()
 {
 	while (true) try {
@@ -252,10 +298,21 @@ void calculate()
 	}
 }
 
-int main()
+int main()//Ejecucion del programa con todas sus funciones
 
 try {
-	calculate();
+	cout << "Bienvenido a la calculadora, si necesitas ayuda presiona H\n";
+	cout << "Si quieres salir presiona E\n";
+	char Ayuda;
+	cin >> Ayuda;
+	if (Ayuda == 'H')
+	{
+		cout << "Se supone que aqui hay algo que ayuda xd\n";
+	}
+	else if (Ayuda == '\n')
+	{
+		calculate();
+	}
 	return 0;
 }
 catch (exception& e) {
