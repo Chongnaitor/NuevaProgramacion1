@@ -309,10 +309,7 @@ try {
 	{
 		cout << "Se supone que aqui hay algo que ayuda xd\n";
 	}
-	else if (Ayuda == '\n')
-	{
-		calculate();
-	}
+	calculate();
 	return 0;
 }
 catch (exception& e) {
