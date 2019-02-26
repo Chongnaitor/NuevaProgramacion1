@@ -257,7 +257,7 @@ int Ejercicio7Y8()
 }
 
 
-int main()
+int Ejercicio9()
 {
 	std::vector<double>Peso{1,8,6,0};
 	std::vector<double>Precio{1,4,4,8};
@@ -276,9 +276,24 @@ int main()
 		int ResultadoFinal = PrecioTotal * PesoTotal;
 		std::cout << ResultadoFinal;
 	}
+	return 1;
 	
 
 	std::cin.get();
 }
 
+
+int maxv(std::vector<double>VectorGrande)
+{
+	std::sort(VectorGrande.begin(), VectorGrande.end());
+	return VectorGrande.back();
+}
+
+int Ejercicio10()
+{
+	std::vector<double>Vector{85,30,45,39,81,0,500,1,5};
+	std::cout<<maxv(Vector);
+	std::cin.get();
+	return 52;
+}
    
