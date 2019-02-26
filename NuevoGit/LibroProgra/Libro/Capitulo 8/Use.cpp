@@ -103,7 +103,7 @@ void  Print(std::vector<int>VectorParaImprimir, std::string Etiqueta)
 {
 	for (int i = 0; i < VectorParaImprimir.size(); i++)
 	{
-		std::cout<<Etiqueta<<" "<< VectorParaImprimir[i];
+		std::cout<<" "<<Etiqueta<< VectorParaImprimir[i];
 	}
 
 }
@@ -118,12 +118,13 @@ int Ejercicio2()
 
 }
 
-void fibonnaci(int NumeroDeRepeticiones)
+std::vector<int>fibonnaci(int NumeroDeRepeticiones,std::vector<int>VectorCulero)
 {
 	int NumeroDeveces = NumeroDeRepeticiones;
 	int a=0;
 	int b=1;
 	int c=0;
+	std::vector<int>VectorFibonnacci;
 	if (NumeroDeveces > 1)
 	{
 		for (int i = 0; i < NumeroDeveces; i++)
@@ -131,18 +132,60 @@ void fibonnaci(int NumeroDeRepeticiones)
 			c = a + b;
 			a = b;
 			b = c;
-			std::cout<<b<<" ";
+			
+			VectorCulero.push_back(b);
+		
+			
 
 		}
+
 	}
 
+	return VectorCulero;
+
 }
-int main()
+int Ejercicio3()
 {
+	std::vector<int>VectorCacas;
+	VectorCacas=fibonnaci(5, VectorCacas);
+
+	Print(VectorCacas, "Lmao");
 	
 
 	std::cin.get();
+	return 61;
 }
+
+/*
+En este ejerccio como da un error por que es numero demasiado grande preferi dejarlo en comentario para que no causara molestias en el codigo
+int Ejercicio4()
+{
+
+	std::vector<int>HastaQueTruene;
+	HastaQueTruene = fibonnaci(60006666666636656844, HastaQueTruene);
+	Print(HastaQueTruene,"Fibbonacci");
+	std::cin.get();
+	return 7;
+}
+*/
+std::vector<int>VectorEnReversa(std::vector<int>ArgumentoVector)
+{
+	int Temporal;
+	int a;
+	int b;
+}
+
+int main() 
+{
+	/*int temp; temp = a, a = b; b = temp;
+	return a, b;
+	*/
+	std::vector<int>MiVector;
+	MiVector = fibonnaci(4, MiVector);
+
+
+}
+
 
 
    
