@@ -202,7 +202,8 @@ int Ejercicio5()
 	return 6;
 
 }
-
+#include <algorithm>
+#include<queue>
 
 class Name_value {
 public:
@@ -212,14 +213,23 @@ public:
 	Name_value(std::string Nombre, int Edad)
 		:Name(Nombre), Age(Edad) {}
 };
-int main()
+
+struct PorNombre
+{
+	bool operator()(const Name_value& PrimerNombre, const Name_value& UltimoNombre) const
+	{
+		return PrimerNombre.Name > UltimoNombre.Name;
+	}
+};
+
+int Ejercicio7Y8()
 {
 	std::vector<Name_value>NombreEdad;
 	std::cout << "Escribe cuantos nombre quierese en tu lista: ";
-	
+
 	int NumeroDePersonas;
 	std::cin >> NumeroDePersonas;
-	for (int i=0; i < NumeroDePersonas; i++)
+	for (int i = 0; i < NumeroDePersonas; i++)
 	{
 		std::cout << "Pon un nombre y su edad: ";
 		std::string Nombre;
@@ -228,11 +238,30 @@ int main()
 		Name_value NombreUsuario(Nombre, edad);
 		NombreEdad.push_back(NombreUsuario);
 	}
-
-
+	std::priority_queue<Name_value, std::vector<Name_value>, PorNombre> OrdenarElementos;
+	for (int i = 0; i < NombreEdad.size(); i++)
+	{
+		OrdenarElementos.push(NombreEdad[i]);
+	}
+	
+	while(!OrdenarElementos.empty())
+	{
+		std::cout << OrdenarElementos.top().Name << " " << OrdenarElementos.top().Age<<"\n";
+		OrdenarElementos.pop();
+	}
+	std::cin.ignore();
+	std::cin.get();
+	return 4;
+ 
+	
 }
 
 
+int main()
+{
 
+
+
+}
 
    
