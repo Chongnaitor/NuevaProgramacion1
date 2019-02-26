@@ -259,9 +259,26 @@ int Ejercicio7Y8()
 
 int main()
 {
+	std::vector<double>Peso{1,8,6,0};
+	std::vector<double>Precio{1,4,4,8};
+	if (Peso.size() == Precio.size())
+	{
+		int PesoTotal=0;
+		for (int i = 0; i < Peso.size(); i++)
+		{
+			PesoTotal += Peso[i];
+		}
+		int PrecioTotal = 0;
+		for (int i = 0; i < Precio.size(); i++)
+		{
+			PrecioTotal+=Precio[i];
+		}
+		int ResultadoFinal = PrecioTotal * PesoTotal;
+		std::cout << ResultadoFinal;
+	}
+	
 
-
-
+	std::cin.get();
 }
 
    
