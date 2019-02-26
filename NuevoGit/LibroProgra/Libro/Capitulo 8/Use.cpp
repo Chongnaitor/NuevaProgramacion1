@@ -173,18 +173,65 @@ std::vector<int>VectorEnReversa(std::vector<int>ArgumentoVector)
 	int Temporal;
 	int a;
 	int b;
+	int M = 1;
+	int Ma = 1;
+	for (int i = 0; i < ArgumentoVector.size();i++)
+	{
+		a = ArgumentoVector[ArgumentoVector.size()-M];
+		Temporal = a;
+		b = ArgumentoVector[Ma];
+		a = b;
+		b = Temporal;
+		ArgumentoVector.push_back(Temporal);
+		M--;
+		Ma++;
+
+
+	}
+	return ArgumentoVector;
 }
 
-int main() 
+int Ejercicio5() 
 {
 	/*int temp; temp = a, a = b; b = temp;
 	return a, b;
 	*/
 	std::vector<int>MiVector;
 	MiVector = fibonnaci(4, MiVector);
+	VectorEnReversa(MiVector);
+	return 6;
+
+}
+
+
+class Name_value {
+public:
+
+	std::string Name;
+	int Age;
+	Name_value(std::string Nombre, int Edad)
+		:Name(Nombre), Age(Edad) {}
+};
+int main()
+{
+	std::vector<Name_value>NombreEdad;
+	std::cout << "Escribe cuantos nombre quierese en tu lista: ";
+	
+	int NumeroDePersonas;
+	std::cin >> NumeroDePersonas;
+	for (int i=0; i < NumeroDePersonas; i++)
+	{
+		std::cout << "Pon un nombre y su edad: ";
+		std::string Nombre;
+		int edad;
+		std::cin >> Nombre >> edad;
+		Name_value NombreUsuario(Nombre, edad);
+		NombreEdad.push_back(NombreUsuario);
+	}
 
 
 }
+
 
 
 
