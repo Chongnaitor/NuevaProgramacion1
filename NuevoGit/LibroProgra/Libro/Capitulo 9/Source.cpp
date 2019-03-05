@@ -7,7 +7,7 @@ struct Date {
 	int d;      //day of month}
 	Date(int Dia, int Mes, int Ano)
 		:d(Dia), m(Mes), y(Ano) {};
-	Date(const Date&Date);
+	Date() {};
 
 	Date Today()
 	{
@@ -16,19 +16,18 @@ struct Date {
 	Date Tomorrow()
 	{
 	
-
-		return Date(25, 9, 1978);
-		
+		Date Tomorrow = Today();
+		Tomorrow.d++;
+		return Tomorrow;
 	}
 };
-	
 
-/*class Name_value {
-public:
+int main()
+{
+	Date MyDate;
+	MyDate = MyDate.Tomorrow();
+	cout << MyDate.d;
+	cin.get();
 
-	std::string Name;
-	int Age;
-	Name_value(std::string Nombre, int Edad)
-		:Name(Nombre), Age(Edad) {}
-};
-*/
+
+}
