@@ -4,15 +4,6 @@
 #include<string>
 #include <algorithm>
 using namespace std;
-
-
-void reverse(int arr[], int n)
-{
-	reverse(arr, arr + n);
-}
-
-
-
 int main()
 {
 	int Largo = 0;
