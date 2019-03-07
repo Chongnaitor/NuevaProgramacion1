@@ -85,41 +85,11 @@ public:
 	string Editorial;
 	bool Existe;
 	Libro();
-	Libro(string Titulo_c, string Autor_c, string Editorial_c,int ISBN_c,string Existe_c)
+	Libro(string Titulo_c, string Autor_c, string Editorial_c,int ISBN_c,bool Existe_c)
 		: ISBN(ISBN_c),Titulo(Titulo_c),Autor(Autor_c),Editorial(Editorial_c),Existe(true){}
-	~Libro() {};
-
-
-
 
 };
-bool LibroSacado(string Sacar, Libro Libra)
-{
-	if (Sacar == "Si" || Sacar == "si")
-	{
-		delete &Libra;
-		return true;
-	
-	}
-	else if (Sacar == "No" || Sacar == "no")
-	{
-		return false;
-	}
 
-}
-
-void LibroChecado(string Usuario, Libro Urmom)
-{
-	if (LibroSacado(Usuario, Urmom) == true)
-	{
-		cout << "El libro si esta";
-	}
-	else if (LibroSacado(Usuario, Urmom) == false)
-	{
-		cout << ("El libro no esta");
-	}
-
-}
 
 void Print(Libro Lmao)
 {
@@ -130,13 +100,23 @@ void Print(Libro Lmao)
 
 
 }
-
+void ComprobarLibro(Libro lmao)
+{
+	if (lmao.Existe == true)
+	{
+		cout << "Aqui tienes tu libro\n";
+	}
+	else if (lmao.Existe == false)
+	{
+		cout << "Se han llevado tu libro\n";
+	}
+}
 int main()
 {
-	Libro SombrasDeGrey("50 Sombras de Grey", "Jennifer Aniston", "Tugfa", 7855545481118);
-	Libro UrMomGay("Ur Mom Gay", "Lmao", "Libros Culeros", 8751515151);
-	Libro Hasaki("Hasaki", "Soriegehton", "Trashuo", 98978987);
-
+	Libro SombrasDeGrey("50 Sombras de Grey", "Jennifer Aniston", "Tugfa", 7855545481118,true);
+	Libro UrMomGay("Ur Mom Gay", "Lmao", "Libros Culeros", 8751515151,true);
+	Libro Hasaki("Hasaki", "Soriegehton", "Trashuo", 98978987,true);
+	vector<Libro>ListaDeLibros{SombrasDeGrey,UrMomGay,Hasaki};
 	cout << "Hola estos son nuestros libros:\n";
 	cout << "Opcion 1\n";
 	Print(SombrasDeGrey);
@@ -147,15 +127,43 @@ int main()
 	cout << "Opcion 3\n";
 	Print(Hasaki);
 	cout << "\n";
-
-	string Desicion;
+	int Eleccion;
+	string mamada;
+	bool Desicion=false;
 	cout << "Quieres sacar un libro?: \n";
-	cin >> Desicion;
-	if (Desicion == "Si" || Desicion == "si")
+	cin >> mamada;
+	if (mamada == "si" || mamada == "Si")
 	{
-		LibroChecado(Desicion, UrMomGay);
-
+		Desicion = false;
 	}
+	else
+	{
+		Desicion = true;
+	}
+	while (Desicion != true)
+	{
+		cout << "Di el numero del libro que quieres: ";
+		cin >> Eleccion;
+		for (int i = 0; i <= Eleccion - 1; i++)
+		{
+			ComprobarLibro(ListaDeLibros[i]);
+			ListaDeLibros[i].Existe=false;
+			ListaDeLibros.push_back(ListaDeLibros[i]);
+
+		}
+		
+		cout << "Quieres sacar un libro?: \n";
+		cin >> mamada;
+		if (mamada == "si" || mamada == "Si")
+		{
+			Desicion = false;
+		}
+		else
+		{
+			Desicion = true;
+		}
+	}
+	
 
 	cin.ignore();
 	cin.get();
@@ -163,7 +171,3 @@ int main()
 
 }
 
-/*
-Libro(string Titulo_c, string Autor_c, string Editorial_c,int ISBN_c )
-		: ISBN(ISBN_c),Titulo(Titulo_c),Autor(Autor_c),Editorial(Editorial_c){}
-*/
