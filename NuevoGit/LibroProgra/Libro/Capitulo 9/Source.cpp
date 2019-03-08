@@ -156,33 +156,72 @@ void SacarLibro(vector<Libro>ListaDeLibros)
 	}
 
 }
+Libro CrearLibro()
+{
+	cout << "Quieres agrergar libro?: ";
+	string Opcion;
+	cin >> Opcion;
+	if (Opcion == "si" || Opcion == "Si")
+	{
+		cout << "Necesitamos una etiqueta del libro(Solo una palabra); \n";
+		string Eiqueta;
+		cin >> Eiqueta;
+		cin.ignore();
+		cout << "Necesitamos el titulo del libro: \n";
+		string Titulo;
+		getline(cin, Titulo);
+		cout << "Necesitamos el Autor: \n";
+		string Autor;
+		getline(cin, Autor);
+		cout << "Necesitamos la editorial: \n";
+		string Editorial;
+		getline(cin, Editorial);
+		cout << "Por ultimo necesitamos el numero de serie(Solo un monton de enteros sin espacios):\n";
+		int NumSer;
+		cin >> NumSer;
+		Libro Etquieta(Titulo, Autor, Editorial, NumSer, true);
+		cout << "Libro Creado!";
+		return Etquieta;
+
+
+	}
+}
+void Menu(vector<Libro>lmao)
+{
+	cout << "\n";
+	for (int i = 0; i <= lmao.size()-1; i++)
+	{
+		cout << "Opcion " << i<<"\n";
+		Print(lmao[i]);
+
+	}
+	cout << "\n";
+
+}
 int main()
 {
 	Libro SombrasDeGrey("50 Sombras de Grey", "Jennifer Aniston", "Tugfa", 7855545481118,true);
 	Libro UrMomGay("Ur Mom Gay", "Lmao", "Libros Culeros", 8751515151,true);
 	Libro Hasaki("Hasaki", "Soriegehton", "Trashuo", 98978987,true);
 	vector<Libro>ListaDeLibros{SombrasDeGrey,UrMomGay,Hasaki};
-	cout << "Hola bienvenido a la biblioteca:\n";
-	cout << "Opcion 1\n";
-	Print(SombrasDeGrey);
-	cout << "\n";
-	cout << "Opcion 2\n";
-	Print(UrMomGay);
-	cout << "\n";
-	cout << "Opcion 3\n";
-	Print(Hasaki);
-	cout << "\n";
-	SacarLibro(ListaDeLibros);
-	cout << "Quieres agrergar libro?: ";
-	string Opcion;
-	if (Opcion == "si" || Opcion == "Si")
+	cout << "Hola bienvenido a la biblioteca\n";
+	cout << "Cuando quieras salir solo escribe salir";
+	bool Salida = false;
+	while (Salida != true)
 	{
-		cout << "Necesitamos una etiqueta del libro: ";
-		string Eiqueta;
-		cin >> Eiqueta;
-
+		Menu(ListaDeLibros);
+		SacarLibro(ListaDeLibros);
+		ListaDeLibros.push_back(CrearLibro());
+		Menu(ListaDeLibros);
+		cout << "Quieres salir de  la libreria?";
+		string Salir;
+		cin >> Salir;
+		if (Salir == "Si" || Salir == "si")
+		{
+			Salida = true;
+		}
 	}
-
+	cout << "Saliendo...";
 
 	cin.ignore();
 	cin.get();
