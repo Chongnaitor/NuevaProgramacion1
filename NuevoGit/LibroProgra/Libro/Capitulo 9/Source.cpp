@@ -111,26 +111,14 @@ void ComprobarLibro(Libro lmao)
 		cout << "Se han llevado tu libro\n";
 	}
 }
-int main()
+
+void SacarLibro(vector<Libro>ListaDeLibros)
 {
-	Libro SombrasDeGrey("50 Sombras de Grey", "Jennifer Aniston", "Tugfa", 7855545481118,true);
-	Libro UrMomGay("Ur Mom Gay", "Lmao", "Libros Culeros", 8751515151,true);
-	Libro Hasaki("Hasaki", "Soriegehton", "Trashuo", 98978987,true);
-	vector<Libro>ListaDeLibros{SombrasDeGrey,UrMomGay,Hasaki};
-	cout << "Hola estos son nuestros libros:\n";
-	cout << "Opcion 1\n";
-	Print(SombrasDeGrey);
-	cout << "\n";
-	cout << "Opcion 2\n";
-	Print(UrMomGay);
-	cout << "\n";
-	cout << "Opcion 3\n";
-	Print(Hasaki);
-	cout << "\n";
 	int Eleccion;
 	string mamada;
-	bool Desicion=false;
+	bool Desicion = false;
 	cout << "Quieres sacar un libro?: \n";
+
 	cin >> mamada;
 	if (mamada == "si" || mamada == "Si")
 	{
@@ -142,17 +130,20 @@ int main()
 	}
 	while (Desicion != true)
 	{
+		int j = 0;
 		cout << "Di el numero del libro que quieres: ";
 		cin >> Eleccion;
 		for (int i = 0; i <= Eleccion - 1; i++)
 		{
-			ComprobarLibro(ListaDeLibros[i]);
-			ListaDeLibros[i].Existe=false;
-			ListaDeLibros.push_back(ListaDeLibros[i]);
-
+			j = i;
 		}
-		
+		ComprobarLibro(ListaDeLibros[j]);
+		ListaDeLibros[j].Existe = false;
+
+
 		cout << "Quieres sacar un libro?: \n";
+
+
 		cin >> mamada;
 		if (mamada == "si" || mamada == "Si")
 		{
@@ -163,7 +154,35 @@ int main()
 			Desicion = true;
 		}
 	}
-	
+
+}
+int main()
+{
+	Libro SombrasDeGrey("50 Sombras de Grey", "Jennifer Aniston", "Tugfa", 7855545481118,true);
+	Libro UrMomGay("Ur Mom Gay", "Lmao", "Libros Culeros", 8751515151,true);
+	Libro Hasaki("Hasaki", "Soriegehton", "Trashuo", 98978987,true);
+	vector<Libro>ListaDeLibros{SombrasDeGrey,UrMomGay,Hasaki};
+	cout << "Hola bienvenido a la biblioteca:\n";
+	cout << "Opcion 1\n";
+	Print(SombrasDeGrey);
+	cout << "\n";
+	cout << "Opcion 2\n";
+	Print(UrMomGay);
+	cout << "\n";
+	cout << "Opcion 3\n";
+	Print(Hasaki);
+	cout << "\n";
+	SacarLibro(ListaDeLibros);
+	cout << "Quieres agrergar libro?: ";
+	string Opcion;
+	if (Opcion == "si" || Opcion == "Si")
+	{
+		cout << "Necesitamos una etiqueta del libro: ";
+		string Eiqueta;
+		cin >> Eiqueta;
+
+	}
+
 
 	cin.ignore();
 	cin.get();
