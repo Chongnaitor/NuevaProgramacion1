@@ -104,7 +104,7 @@ void ComprobarLibro(Libro lmao)
 {
 	if (lmao.Existe == true)
 	{
-		cout << "Aqui tienes tu libro\n";
+		cout << "Aqui tienes tu libro "<<lmao.Titulo<<"\n";
 	}
 	else if (lmao.Existe == false)
 	{
@@ -133,12 +133,13 @@ void SacarLibro(vector<Libro>ListaDeLibros)
 		int j = 0;
 		cout << "Di el numero del libro que quieres: ";
 		cin >> Eleccion;
-		for (int i = 0; i <= Eleccion - 1; i++)
+		for (int i = 0; i <= Eleccion; i++)
 		{
 			j = i;
 		}
 		ComprobarLibro(ListaDeLibros[j]);
 		ListaDeLibros[j].Existe = false;
+		j = 0;
 
 
 		cout << "Quieres sacar un libro?: \n";
@@ -158,11 +159,7 @@ void SacarLibro(vector<Libro>ListaDeLibros)
 }
 Libro CrearLibro()
 {
-	cout << "Quieres agrergar libro?: ";
-	string Opcion;
-	cin >> Opcion;
-	if (Opcion == "si" || Opcion == "Si")
-	{
+	
 		cout << "Necesitamos una etiqueta del libro(Solo una palabra); \n";
 		string Eiqueta;
 		cin >> Eiqueta;
@@ -184,7 +181,7 @@ Libro CrearLibro()
 		return Etquieta;
 
 
-	}
+	
 }
 void Menu(vector<Libro>lmao)
 {
@@ -193,7 +190,8 @@ void Menu(vector<Libro>lmao)
 	{
 		cout << "Opcion " << i<<"\n";
 		Print(lmao[i]);
-
+		cout << "\n";
+		
 	}
 	cout << "\n";
 
@@ -205,13 +203,18 @@ int main()
 	Libro Hasaki("Hasaki", "Soriegehton", "Trashuo", 98978987,true);
 	vector<Libro>ListaDeLibros{SombrasDeGrey,UrMomGay,Hasaki};
 	cout << "Hola bienvenido a la biblioteca\n";
-	cout << "Cuando quieras salir solo escribe salir";
 	bool Salida = false;
 	while (Salida != true)
 	{
 		Menu(ListaDeLibros);
 		SacarLibro(ListaDeLibros);
-		ListaDeLibros.push_back(CrearLibro());
+		cout << "Quieres hacer un libro?";
+		string Swewwtr;
+		cin >> Swewwtr;
+		if (Swewwtr == "Si" || Swewwtr == "si")
+		{
+			ListaDeLibros.push_back(CrearLibro());
+		}
 		Menu(ListaDeLibros);
 		cout << "Quieres salir de  la libreria?";
 		string Salir;
