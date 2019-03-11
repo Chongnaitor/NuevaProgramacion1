@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include<fstream>
-
+#include<string>
 using namespace std;
 
 
@@ -52,19 +52,19 @@ void ImprimreVectores(const vector<Punto>& Puntos)
 
 void EscribirArchivo(const vector<Punto>& Puntos, const string& Nombre)
 {
-	ofstream ost(Nombre.c_str());
-	if (!ost) cout<<"No se pudo abrir sorry ", Nombre;
+	ofstream OutputStream(Nombre.c_str());
+	if (!OutputStream) cout<<"No se pudo abrir sorry ", Nombre;
 	for (int i = 0; i < Puntos.size(); ++i)
-		ost << Puntos[i] << endl;
+		OutputStream << Puntos[i] << endl;
 }
 
 
 void Llenar(vector<Punto>& Puntos, const string& Nombre)
 {
-	ifstream ist(Nombre.c_str());
-	if (!ist) cout<<"No se pudo abrir, ", Nombre;
+	ifstream InputStream(Nombre.c_str());
+	if (!InputStream) cout<<"No se pudo abrir, ", Nombre;
 	Punto p;
-	while (ist >> p) Puntos.push_back(p);
+	while (InputStream >> p) Puntos.push_back(p);
 }
 
 void ComparadorDeVectores(const vector<Punto>& Puntos1, const vector<Punto>& Puntos2)
@@ -77,7 +77,7 @@ void ComparadorDeVectores(const vector<Punto>& Puntos1, const vector<Punto>& Pun
 	}
 }
 
-int main()
+int Drill()
  {
 	
 	vector<Punto> Puntos;
@@ -106,6 +106,42 @@ int main()
 
 
 	ComparadorDeVectores(Puntos,PuntosProcesados);
+	cin.ignore();
+	cin.get();
+	return 6;
+}
+
+
+
+
+
+
+void LectorDeEnteros(vector<int>& Numeros, const string& Nombre)
+{
+	ifstream Leer(Nombre.c_str());
+	if (!Leer) cout<<"No se pudo abrir el archivo ", Nombre;
+	int numero;
+	while (Leer >> numero) Numeros.push_back(numero);
+}
+
+
+int Suma(const vector<int>& Vector)
+{
+	int suma = 0;
+	for (int i = 0; i < Vector.size(); ++i)
+		suma += Vector[i];
+	return suma;
+}
+
+int main()
+{
+	cout << "Ponga el nombre del archivo: ";
+	string NombreDeArchivo;
+	cin >> NombreDeArchivo;
+	vector<int> Enteros;
+	LectorDeEnteros(Enteros, NombreDeArchivo);
+	int suma = Suma(Enteros);
+	cout << "La suma de  " << NombreDeArchivo << " es " << suma << ".\n";
 	cin.ignore();
 	cin.get();
 }
