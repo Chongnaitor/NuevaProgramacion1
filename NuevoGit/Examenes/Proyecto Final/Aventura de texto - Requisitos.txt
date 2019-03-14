@@ -1,0 +1,22 @@
+﻿-Aventura de texto con lectura y escritura de archivos. Que los "cuartos" estén en una lista y conozcan sus cuartos adyacentes (o líneas de historia). Guardar avance del juego. Reto: dibujar el mapa en un archivo y que este se vaya revelando mientras avanza el jugador.
+
+Resumen de acciones:
++Mostrar al usuario el punto en que esta.
++Pedir al usuario que tome una accion.
++Guardar el avance del usuario.
+
+*Debe tener las rutas de la aventura guardadas en uno o varios archivos.
+
+*Debe recibir inputs del usuario, con comandos simples, para determinar el siguiente camino.
+
+*Debe guardar el avance del jugador en un archivo.
+
+*Debe permitirle al usuario iniciar una partida nueva.
+
+Uso obligatorio de:
+@ Lectura/escritura de archivos.
+@ Punteros.s
+@ Clases.
+@ Sobrecarga de funciones.
+@ Sobrecarga de operadores.
+@ Tener al menos 4 "cuartos" enlazados entre ellos.

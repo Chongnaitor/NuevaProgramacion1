@@ -28,18 +28,18 @@ ostream& operator<<(ostream& Output, const Punto& Punto)
 	return Output << '(' << Punto.x << ',' << Punto.y << ')';
 }
 
-istream& operator>>(istream& is, Punto& p)
+istream& operator>>(istream& InputStream, Punto& Puntos)
 {
 	int x, y;
 	char ch1, ch2, ch3;
-	is >> ch1 >> x >> ch2 >> y >> ch3;
-	if (!is) return is;
+	InputStream >> ch1 >> x >> ch2 >> y >> ch3;
+	if (!InputStream) return InputStream;
 	if (ch1 != '(' || ch2 != ',' || ch3 != ')') {
-		is.clear(ios_base::failbit);
-		return is;
+		InputStream.clear(ios_base::failbit);
+		return InputStream;
 	}
-	p = Punto(x, y);
-	return is;
+	Puntos = Punto(x, y);
+	return InputStream;
 }
 
 
@@ -145,3 +145,6 @@ int main()
 	cin.ignore();
 	cin.get();
 }
+
+
+
