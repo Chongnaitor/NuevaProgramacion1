@@ -41,20 +41,78 @@ Jugador FabricaDeJugadores()
 	 return JugadorUno;
 
 }
+Jugador FabricaDeJugadores(string NombreViejo, int Objetos)
+{
+	if (Objetos == 1)
+	{
+		bool Pistola;
+		bool Linterna;
+		bool Llave;
+		vector<bool>Items{ Pistola = true,Linterna = false,Llave = false };
+		Jugador Jugador1(NombreViejo, 100, Items);
+		return Jugador1;
+	}
+	else if (Objetos == 2)
+	{
+		bool Pistola;
+		bool Linterna;
+		bool Llave;
+		vector<bool>Items{ Pistola = true,Linterna = true,Llave = false };
+		Jugador Jugador1(NombreViejo, 100, Items);
+		return Jugador1;
+	}
+
+	else if (Objetos == 3)
+	{
+		bool Pistola;
+		bool Linterna;
+		bool Llave;
+		vector<bool>Items{ Pistola = true,Linterna = true,Llave = false };
+		Jugador Jugador1(NombreViejo, 100, Items);
+		return Jugador1;
+	}
+
+}
 vector<int>Niveles()
 {
 	vector<int>Niveles{Nivel1,Nivel2,Nivel3,Nivel4 };
 	return Niveles;
 }
-ofstream* Salvado(int Nivel, Jugador Trash)
+ofstream* Salvado(int Nivel,Jugador Trash)
 {
 	ofstream* Nombre=new ofstream;
 	Nombre->open("Niveles.txt");
-	*Nombre << Nivel<<" "<<Trash.NombreDelJugador<<" "<< Trash.Inventario[0]<<" "<<Trash.Inventario[1]<<" "<<Trash.Inventario[2]<<endl;
+	*Nombre << Nivel<<" "<<Trash.NombreDelJugador;
 	Nombre->close();
 	delete Nombre;
 	return Nombre;
 
+}
+int AbrirJuegoNivel()
+{
+	ifstream JuegoViejo;
+	int Nivel;
+	string NombreDelJugador;
+	JuegoViejo.open("Niveles.txt");
+	if (!JuegoViejo)
+	{
+		return 0;
+	}
+	JuegoViejo >>Nivel >>NombreDelJugador;
+	JuegoViejo.close();
+	return Nivel;
+}
+string AbrirJuegoNombre()
+{
+	ifstream JuegoViejo;
+	int Nivel;
+	string NombreDelJugador;
+	string NombreDelJugador1;
+	string NombreDelJugador2;
+	JuegoViejo.open("Niveles.txt");
+	JuegoViejo >> Nivel>>NombreDelJugador>>NombreDelJugador1>>NombreDelJugador2;
+	JuegoViejo.close();
+	return NombreDelJugador+" "+NombreDelJugador1+" "+NombreDelJugador2;
 }
 enum Cuartos
 {
@@ -298,18 +356,44 @@ void Level1(Jugador&Simon)
 						{Pared,Objeto,Vacio,Vacio,Vacio,Pared},
 						{Pared,Pared,Salida,Pared,Pared,Pared } };
 	Moverse(Nivel, Simon, Pistola_e, 1, 1);
-	
-
-
-
+	Salvado(1, Simon);
 }
+void Level2(Jugador&Simon);
+void Level3(Jugador&Simon);
+void Level4(Jugador&Simoon);
 int main()
 {
-
-	
-	Jugador Jugador1=FabricaDeJugadores();
-	Level1(Jugador1);
-	Salvado(1,Jugador1);
+	cout << "Bienvenido al bosque de los lamentos" << endl;
+	cout << "Tienes ya un juego?" << endl;
+	string Juego;
+	cin >> Juego;
+	if (Juego == "si" || Juego == "SI" || Juego == "Si")
+	{
+		AbrirJuegoNivel();
+		int Juego;
+		Juego = AbrirJuegoNivel();
+		if (Juego == 0)
+		{
+			cout << "Tu juego no existe, se te creare una nueva partida"<<endl;
+			cin.ignore();
+			Jugador Jugador1 = FabricaDeJugadores();
+			Level1(Jugador1);
+		}
+		else if (Juego == 1)
+		{
+			cout << "Abriendo juego..."<<endl
+				;
+			string JugadorNombre = AbrirJuegoNombre();
+			Jugador Jugador1=FabricaDeJugadores(JugadorNombre, Juego);
+			cout << Jugador1.NombreDelJugador;
+		}
+	}
+	else if (Juego == "No" || Juego == "NO" || Juego == "no")
+	{
+		
+		cin.ignore();
+		Jugador Jugador1 = FabricaDeJugadores();
+		Level1(Jugador1);
+	}
 	cin.get();
-
  }
