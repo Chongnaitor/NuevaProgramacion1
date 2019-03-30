@@ -187,13 +187,7 @@ void Cuento()
 	cout << "y les pagaron mucho dinero por el accidente y terminaron en " << Ciudad << " y vivieron felices para siempre" << endl;
 	cin.ignore();
 	cin.get();
-
-
-
-
-
 }
-
 void PeleaConEsqueletos()
 {
 	int Calavera = 5;
@@ -287,11 +281,235 @@ void PeleaConEsqueletos()
 	cin.get();
 
 }
+void ProblemasFisicos()
+{
+	system("cls");
+	cout << "En esta estatua se puede leer Sir Johnson, fisico..."<<endl;
+	cout << "Hola, soy Sir Johnson, antes de la dolorosa muerte que tuve en este bosque" << endl;
+	cout << "era el fisico del este pueblo... Ahora bosque." << endl;
+	cout << "Cuando la maldicion cayó, jure que evitaria que alguien más pasara de aquí, al menos que fuera por una causa noble" << endl;
+	cout << "Ya veo, perdiste a tu novia por los esqueletos de la Bruja... Seguramente destrozara su alma " << endl;
+	cout << "Para quedarse con su cuerpo. Te dejare pasar si me respondes todas mis preguntas" << endl;
+	cout << "Cual es el valor de la fuerza de la gravedad?" << endl;
+	string respuesta;
+	string gravedad = "9.8";
+	bool pregunta=false;
+	while (pregunta == false)
+	{
+		cin >> respuesta;
+		if (respuesta == gravedad)
+		{
+			cout << "Correcto" << endl;
+			pregunta = true;
+		}
+		else if (respuesta != gravedad)
+		{
+			cout << "Esta mal" << endl;
+			Sleep(2000);
+			ProblemasMatematicos();
+		}
 
+	}	
+	pregunta = false;
+	while (pregunta == false)
+	{
+		cout << "Di el apellido de la persona que invento la teoria de la relativad" << endl;
+		string respuesta2;
+		cin >> respuesta2;
+		if (respuesta2 == "Einstein" || respuesta2 == "einstein")
+		{
+			cout << "Correcto" << endl;
+			pregunta = true;
+
+		}
+		else if (respuesta2 != "Einstein" || respuesta2 != "einstein")
+		{
+			cout << "Esta mal" << endl;
+			Sleep(2000);
+			ProblemasMatematicos();
+		}
+	}
+	pregunta = false;
+	while (pregunta == false)
+	{
+		cout << "Di el apellido de la persona que invento la pasteurizacion" << endl;
+		string respuesta2;
+		cin >> respuesta2;
+		if (respuesta2 == "Pasteur" || respuesta2 == "pasteur")
+		{
+			cout << "Correcto" << endl;
+			pregunta = true;
+
+		}
+		else if (respuesta2 != "Pasteur" || respuesta2 != "pasteur")
+		{
+			cout << "Esta mal" << endl;
+			Sleep(2000);
+			ProblemasMatematicos();
+		}
+	}
+	cout << "Lo lograste puedes pasar" << endl;
+	cout << "Presiona ENTER para pasar" << endl;
+	cin.get();
+
+}
+void ProblemasDeArte()
+{
+	system("cls");
+	cout << "En esta estatua se puede leer Lady Micaila, Apasionada artista" << endl;
+	cout << "Hola, soy Macaila, antes de la maldicion y de que el pueblo se quemara hasta los cimientos" << endl;
+	cout << "era la artista del pueblo, mi trabajo era hermoso incluso estas estatuas son parte de mi trabajo." << endl;
+	cout << "Antes de que la bruja acabara con todo pinte runas con sangre de la gente que esta en estas estatuas" << endl;
+	cout << "de esa manera evitariamos que alguien reviviera a la bruja." << endl;
+	cout << "Si quieres pasar por mi, tendras que contestar mis preguntas." << endl;
+	cout << "Artista mexicna muy reconocida?" << endl;;
+	string respuesta;
+	string gravedad = "Frida Khalo";
+	bool pregunta = false;
+	while (pregunta == false)
+	{
+		getline(cin,respuesta);
+		if (respuesta == gravedad)
+		{
+			cout << "Correcto" << endl;
+			pregunta = true;
+		}
+		else if (respuesta != gravedad)
+		{
+			cout << "Esta mal" << endl;
+			Sleep(2000);
+			ProblemasDeArte();
+		}
+
+	}
+	pregunta = false;
+	while (pregunta == false)
+	{
+		cout << "Di el apellido de la persona que pinto la Mona Lisa" << endl;
+		string respuesta2;
+		cin >> respuesta2;
+		if (respuesta2 == "Davinci" || respuesta2 == "davinci")
+		{
+			cout << "Correcto" << endl;
+			pregunta = true;
+
+		}
+		else if (respuesta2 != "Davinci" || respuesta2 != "davinci")
+		{
+			cout << "Esta mal" << endl;
+			Sleep(2000);
+			ProblemasDeArte();
+		}
+	}
+	pregunta = false;
+	while (pregunta == false)
+	{
+		cout << "Como se llamaba el eo en realidad?" << endl;
+		string respuesta2;
+		cin.ignore();
+		getline(cin, respuesta2);
+		if (respuesta2 == "Freddy Mercury" || respuesta2 == "freddy mercury")
+		{
+			cout << "Correcto" << endl;
+			pregunta = true;
+
+		}
+		else if (respuesta2 != "Freddy Mercury" || respuesta2 != "freddy mercury")
+		{
+			cout << "Esta mal" << endl;
+			Sleep(2000);
+			ProblemasDeArte();
+		}
+	}
+	cout << "Lo lograste puedes pasar" << endl;
+	cout << "Presiona ENTER para pasar" << endl;
+	cin.get();
+
+}
+void ProblemasMatematicos()
+{
+	system("cls");
+	cout << "En esta estatua se puede leer, Nicholas Michaels Matematico."<<endl;
+	cout << "Hola, soy Nicholas y antes de este desastre era profesor de matematicas del pueblo." << endl;
+	cout << "Aunque mis ultimos momentos antes de ser estatua fueron en la carcel, por ayudar a la bruja." << endl;
+	cout << "No sabia que era lo que hacia, entonces para redimirme me ofreci a ser la tercera estatua" << endl;
+	cout << "Si quieres pasar tendras que resolver los problemas que te de" << endl;
+	cout << "7*8-51" << endl;
+
+	string respuesta;
+	string gravedad = "5";
+	bool pregunta = false;
+	while (pregunta == false)
+	{
+		getline(cin, respuesta);
+		if (respuesta == gravedad)
+		{
+			cout << "Correcto" << endl;
+			pregunta = true;
+		}
+		else if (respuesta != gravedad)
+		{
+			cout << "Esta mal" << endl;
+			Sleep(2000);
+			ProblemasDeArte();
+		}
+
+	}
+	pregunta = false;
+	while (pregunta == false)
+	{
+		cout << "Si tienes un Kilo de algodon y uno de clavos cual es mas pesado?" << endl;
+		string respuesta2;
+		cin >> respuesta2;
+		if (respuesta2 == "Ninguno" || respuesta2 == "niguno")
+		{
+			cout << "Correcto" << endl;
+			pregunta = true;
+
+		}
+		else if (respuesta2 != "ninguno" || respuesta2 != "Ninguno")
+		{
+			cout << "Esta mal" << endl;
+			Sleep(2000);
+			ProblemasDeArte();
+		}
+	}
+	pregunta = false;
+	while (pregunta == false)
+	{
+		cout << "Cual es el numero divino?" << endl;
+		string respuesta2;
+		cin.ignore();
+		getline(cin, respuesta2);
+		if (respuesta2 == "7" || respuesta2 == "siete"||respuesta2=="Siete")
+		{
+			cout << "Correcto" << endl;
+			pregunta = true;
+
+		}
+		else if (respuesta2 != "7" || respuesta2 != "siete" || respuesta2 != "Siete")
+		{
+			cout << "Esta mal" << endl;
+			Sleep(2000);
+			ProblemasDeArte();
+		}
+	}
+	cout << "Lo lograste puedes pasar" << endl;
+	cout << "Presiona ENTER para pasar" << endl;
+	cin.get();
+
+}
+void Nombres()
+{
+	
+
+
+
+}
 
 int main()
 {
-	PeleaConEsqueletos();
+	
 	cin.get();
 	return 5;
 }
