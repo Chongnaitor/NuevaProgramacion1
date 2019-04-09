@@ -926,6 +926,7 @@ void Moverse(int Pog[6][6], Jugador & Jugador,int NumeroDeObjeto,int InicioX,int
 void Level1(Jugador&Simon);
 void Level1Minigame(Jugador&Jugador1)
 {
+	Sleep(1500);
 	cin.ignore();
 	system("cls");
 	cout << "Bienvenido " << Jugador1.NombreDelJugador << " soy el duende Juanito. Se que estas buscado a alguien.\n"
@@ -1088,15 +1089,15 @@ void Level1Minigame(Jugador&Jugador1)
 	cin.get();
 	Level1(Jugador1);
 	}
-	else
+	else if(decision != "no" || decision != "No" || decision != "NO"|| decision != "Si" || decision != "SI" || decision != "si")
 	{
-	cout << "Opcion no valida" << endl;
-	Level1Minigame(Jugador1);
+		cout << "Opcion no valida" << endl;
+		Level1Minigame(Jugador1);
 	}
 	cin.ignore();
-	cout << "Presione ENTER para contiunuar" << endl;
-		cin.get();
-		system("cls");
+	cout << "Lo lograste, siguiente nivel" << endl;
+	Sleep(3000);
+	system("cls");
 }
 void Level1(Jugador&Simon)
 {

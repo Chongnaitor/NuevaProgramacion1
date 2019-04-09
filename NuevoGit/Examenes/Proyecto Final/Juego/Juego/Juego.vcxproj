@@ -23,6 +23,7 @@
     <ProjectGuid>{3A5FB956-5610-4A6E-B3D8-F5C1EF091596}</ProjectGuid>
     <RootNamespace>Juego</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <ProjectName>JuegoMamalon</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
